@@ -247,3 +247,19 @@ EOF
 <<~EOF
   #{1}#{2}
 EOF
+
+#~# ORIGINAL heredoc_squiggly_multiline_initial_char_alignment
+
+<<~EOF
+              some text
+              #{1}
+              #{2}
+    EOF
+
+#~# EXPECTED
+
+<<~EOF
+  some text
+  #{1}
+  #{2}
+EOF
