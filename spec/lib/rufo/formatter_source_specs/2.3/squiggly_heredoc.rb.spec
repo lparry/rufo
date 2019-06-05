@@ -247,3 +247,69 @@ EOF
 <<~EOF
   #{1}#{2}
 EOF
+
+#~# ORIGINAL heredoc_squigly_without_trailing_comma
+
+a = {
+  key: <<~EOF
+    -----BEGIN PUBLIC KEY-----
+    skldjflksdjlkfsdjlkfdsjlkfsd
+    skdjlfjsdklfjslkdfjsdlkfjdsl
+    -----END PUBLIC KEY-----
+  EOF
+}
+
+#~# EXPECTED
+
+a = {
+  key: <<~EOF,
+    -----BEGIN PUBLIC KEY-----
+    skldjflksdjlkfsdjlkfdsjlkfsd
+    skdjlfjsdklfjslkdfjsdlkfjdsl
+    -----END PUBLIC KEY-----
+  EOF
+}
+
+#~# ORIGINAL heredoc_squigly_with_trailing_comma
+
+a = {
+   key: <<~EOF,
+    -----BEGIN PUBLIC KEY-----
+    skldjflksdjlkfsdjlkfdsjlkfsd
+    skdjlfjsdklfjslkdfjsdlkfjdsl
+    -----END PUBLIC KEY-----
+  EOF
+}
+
+#~# EXPECTED
+
+a = {
+  key: <<~EOF,
+    -----BEGIN PUBLIC KEY-----
+    skldjflksdjlkfsdjlkfdsjlkfsd
+    skdjlfjsdklfjslkdfjsdlkfjdsl
+    -----END PUBLIC KEY-----
+  EOF
+}
+
+#~# ORIGINAL heredoc_squigly_with_trailing_comma_and_comment
+
+a = {
+  key: <<~EOF, # comment
+    -----BEGIN PUBLIC KEY-----
+    skldjflksdjlkfsdjlkfdsjlkfsd
+    skdjlfjsdklfjslkdfjsdlkfjdsl
+    -----END PUBLIC KEY-----
+  EOF
+}
+
+#~# EXPECTED
+
+a = {
+  key: <<~EOF, # comment
+    -----BEGIN PUBLIC KEY-----
+    skldjflksdjlkfsdjlkfdsjlkfsd
+    skdjlfjsdklfjslkdfjsdlkfjdsl
+    -----END PUBLIC KEY-----
+  EOF
+}
